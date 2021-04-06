@@ -9,7 +9,11 @@
 	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
 	/>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<?php include "header.php"?>
+	<?php
+	if(isset($_POST["show-item"])){
+		header("location: ./single.php");
+	}
+	include "header.php"?>
 	<!-- banner -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<!-- Indicators-->
@@ -112,7 +116,7 @@
 							<div class="row">
 								
 										<?php 
-											$sql = "SELECT * FROM producttable where mainCategory='1' ORDER BY id DESC LIMIT 3";
+											$sql = "SELECT * FROM producttable where mainCategory='2' ORDER BY id DESC LIMIT 3";
 											$result= mysqli_query($link,$sql);
 											while($row=mysqli_fetch_array($result)){
 												if(isset($_POST["submit-crack".$row['id']])){
@@ -184,16 +188,15 @@
 							<h3 class="heading-tittle text-center font-italic">New Women's wear</h3>
 							<div class="row">
 								<?php
-									$sql1 = "SELECT * FROM producttable WHERE maincategory='2' ORDER BY id DESC LIMIT 3";
+								
+									$sql1 = "SELECT * FROM producttable WHERE maincategory='1' ORDER BY id DESC LIMIT 3";
 									$result1 = mysqli_query($link,$sql1);
 									if(isset($_POST['submit-crack'])){
 										echo"<script>alert('User must signin first')</script>";
 									}
 									while($row1 = mysqli_fetch_array($result1)){
 										if($pip==0){
-											if(isset($_POST["show-item"])){
-												header("location:index.php");
-											}
+											
 											echo'
 											<div class="col-md-4 product-men mt-5">
 												<div class="men-pro-item simpleCart_shelfItem">
