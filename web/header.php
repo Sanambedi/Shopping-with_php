@@ -618,11 +618,11 @@
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder="Password" name="password" id="password" minlength="8" required="">
+							<input type="password" class="form-control" placeholder="Password" name="password" id="password" minlength="8" required="true">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" minlength="8" onblur=checkpassword(this.value) id="confirmPassword" required="">
+							<input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" minlength="8" onblur=checkpassword(this.value) id="confirmPassword">
 						</div>
 						<div class="right-w3l">
 							<button class="btn btn-danger btn-lg btn-block" name="button">Submit</button>

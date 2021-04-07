@@ -195,8 +195,10 @@
 										echo"<script>alert('User must signin first')</script>";
 									}
 									while($row1 = mysqli_fetch_array($result1)){
+										if(isset($_POST['show-item-'.$row1["id"]])){
+											header("location: single.php");
+										}
 										if($pip==0){
-											
 											echo'
 											<div class="col-md-4 product-men mt-5">
 												<div class="men-pro-item simpleCart_shelfItem">
@@ -205,7 +207,9 @@
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
 															<form method="post">
-																<button class="link-product-add-cart" name="show-item">Quick View</button>
+																<button class="link-product-add-cart" name="show-item-';
+																echo $row["id"];
+																echo '">Quick View</button>
 															</form>	
 															</div>
 														</div>
