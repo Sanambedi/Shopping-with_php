@@ -198,14 +198,29 @@
 											<div class="col-md-4 product-men mt-5">
 												<div class="men-pro-item simpleCart_shelfItem">
 													<div class="men-thumb-item text-center">
-														<img src="../../php mysql stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
+														<img src="../../php%20mysql%20stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-															<form method="post" class="form3-'.$row1["id"].'">
-																<input type="hidden" name="id" value="'.$row1["id"].'" />
+															<form method="post" class="form3'.$row1["id"].'">
+															<fieldset>
+																<input type="hidden" name="productid1" id="productid1'.$row1["id"].'" value="'.$row1["id"].'" />
 																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
-															</form>	
-															</div>
+															</fieldset>
+															</form>';
+															echo '<script>
+																$(document).ready(function(){
+																	$(".form3'.$row1["id"].'").submit(function(event){
+																		event.preventDefault()
+																		
+																		var productid1 = document.getElementById("productid1'.$row1["id"].'").value
+																		
+																		$.post("single.php",{productid1:productid1},function(data){
+																			location.replace("./single.php")
+																		})
+																	})
+																})
+																</script>';	
+															echo '</div>
 														</div>
 														<span class="product-new-top">New</span>
 													</div>
@@ -218,7 +233,7 @@
 															<del>$'.$row1["productMrp"].'</del>
 														</div>
 														<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-														<form action="'.$_SERVER['PHP_SELF'].'" method="post" id="blank6255">
+														<form action="'.$_SERVER['PHP_SELF'].'" class="213" method="post" id="blank6255">
 															<fieldset>
 																<input type="hidden" name="name" value="'.$pip.'" />
 																<input type="hidden" name="productid" value="'.$row1["id"].'" />
@@ -232,14 +247,7 @@
 													</div>
 												</div>
 											</div>';
-											echo '<script>
-												$(document).ready(function(){
-													$(".form3-'.$row1["id"].'").submit(funcion(event{
-														event.preventDefault()
-														var 
-													})
-												})
-											</script>';
+											
 										}
 										else{
 										echo'
@@ -287,7 +295,7 @@
 											var quantity = document.getElementById("quantity").value
 											var price = document.getElementById("amount'.$row1["productMrp"].'").value
 											$.post("process.php",{customer_id:customer_id,productid:productid,quantity:quantity,price:price},function(data){
-												console.log(data)
+												console.log(data);
 											})
 										})
 									})

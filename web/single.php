@@ -47,6 +47,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
 				<span>S</span>ingle
 				<span>P</span>age</h3>
+				<?php 
+				include "connection.php";
+				$main=$_POST["productid1"];
+
+					// $sql = "SELECT * FROM producttable where id='$productid1'";
+					// $result = mysqli_query($link,$sql);
+					// while($row1 = mysqli_fetch_array($result)){
+					// 	echo '<input type="text" value="'.$row["productName"].'">';
+					// }
+				?>
 			<!-- //tittle heading -->
 			<div class="row">
 				<div class="col-lg-5 col-md-8 single-right-left ">
