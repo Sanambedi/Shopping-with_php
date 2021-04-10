@@ -9,6 +9,7 @@
 	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
 	/>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	
 	<?php
 	include "header.php"?>
 	<!-- banner -->
@@ -192,9 +193,6 @@
 										echo"<script>alert('User must signin first')</script>";
 									}
 									while($row1 = mysqli_fetch_array($result1)){
-										if(isset($_POST['show-item-'.$row1["id"]])){
-											header("location: single.php");
-										}
 										if($pip==0){
 											echo'
 											<div class="col-md-4 product-men mt-5">
@@ -203,10 +201,9 @@
 														<img src="../../php mysql stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-															<form method="post">
-																<button class="link-product-add-cart" name="show-item-';
-																echo $row["id"];
-																echo '">Quick View</button>
+															<form method="post" class="form3-'.$row1["id"].'">
+																<input type="hidden" name="id" value="'.$row1["id"].'" />
+																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
 															</form>	
 															</div>
 														</div>
@@ -235,6 +232,14 @@
 													</div>
 												</div>
 											</div>';
+											echo '<script>
+												$(document).ready(function(){
+													$(".form3-'.$row1["id"].'").submit(funcion(event{
+														event.preventDefault()
+														var 
+													})
+												})
+											</script>';
 										}
 										else{
 										echo'
