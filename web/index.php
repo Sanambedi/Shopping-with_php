@@ -201,25 +201,23 @@
 														<img src="../../php%20mysql%20stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-															<form method="post" class="form3'.$row1["id"].'">
+															<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
 															<fieldset>
-																<input type="hidden" name="productid1" id="productid1'.$row1["id"].'" value="'.$row1["id"].'" />
 																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
 															</fieldset>
 															</form>';
-															echo '<script>
-																$(document).ready(function(){
-																	$(".form3'.$row1["id"].'").submit(function(event){
-																		event.preventDefault()
+															// echo '<script>
+															// 	$(document).ready(function(){
+															// 		$(".form3'.$row1["id"].'").submit(function(event){
+															// 			event.preventDefault()
+															// 			var productid1 = document.getElementById("productid1'.$row1["id"].'").value
 																		
-																		var productid1 = document.getElementById("productid1'.$row1["id"].'").value
-																		
-																		$.post("single.php",{productid1:productid1},function(data){
-																			location.replace("./single.php")
-																		})
-																	})
-																})
-																</script>';	
+															// 			$.post("single.php",{productid1:productid1},function(data){
+															// 				location.replace("./single.php")
+															// 			})
+															// 		})
+															// 	})
+															// 	</script>';	
 															echo '</div>
 														</div>
 														<span class="product-new-top">New</span>

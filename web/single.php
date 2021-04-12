@@ -49,16 +49,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span>P</span>age</h3>
 				<?php 
 				include "connection.php";
-				$main=$_POST["productid1"];
-
-					// $sql = "SELECT * FROM producttable where id='$productid1'";
-					// $result = mysqli_query($link,$sql);
-					// while($row1 = mysqli_fetch_array($result)){
-					// 	echo '<input type="text" value="'.$row["productName"].'">';
-					// }
-				?>
-			<!-- //tittle heading -->
-			<div class="row">
+				$productid1 = $_GET['request'];
+					$sql = "SELECT * FROM producttable where id='$productid1'";
+					$result = mysqli_query($link,$sql);
+					while($row = mysqli_fetch_array($result)){
+						echo '
+						<div class="row">
 				<div class="col-lg-5 col-md-8 single-right-left ">
 					<div class="grid images_3_of_2">
 						<div class="flexslider">
@@ -84,7 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
 					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
 					<p class="mb-3">
-						<span class="item_price">$200.00</span>
+						<span class="item_price">$'.$row["productMrp"].'</span>
 						<del class="mx-2 font-weight-light">$280.00</del>
 						<label>Free delivery</label>
 					</p>
@@ -188,6 +184,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div>
+						';
+					}
+				?>
+			<!-- //tittle heading -->
+			
 	<!-- middle section -->
 
 	<?php "./footer.php"?>
