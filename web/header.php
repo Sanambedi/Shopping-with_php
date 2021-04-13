@@ -675,6 +675,7 @@
 									<input type="hidden" name="display" value="1">
 									<button class="btn w3view-cart" type="submit" name="submit" value="">
 										<i class="fas fa-cart-arrow-down"></i>
+										<span class='badge badge-warning' id='lblCartCount'> 5 </span>
 									</button>
 								</form>
 							</div>
