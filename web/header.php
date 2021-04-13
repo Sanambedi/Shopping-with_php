@@ -673,9 +673,17 @@
 								<form action="#" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="display" value="1">
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
-										<i class="fas fa-cart-arrow-down"></i>
-										<span class='badge badge-warning' id='lblCartCount'> 5 </span>
+										<?php 
+										echo '<button class="btn w3view-cart" type="submit" name="submit" value="">
+												<i class="fas fa-cart-arrow-down"></i>';
+													$sql = "SELECT * FROM tabcart where customer_id='$pip'";
+													$result = mysqli_query($link,$sql);
+													$numbers=0;
+													while($row = mysqli_fetch_array($result)){
+														$numbers++;	
+													}
+											echo '<span class="badge badge-warning">'.$numbers.'</span>'
+										?>
 									</button>
 								</form>
 							</div>
