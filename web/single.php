@@ -61,15 +61,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<ul class="slides">
 								<li data-thumb="images/si1.jpg">
 									<div class="thumb-image">
-										<img src="images/si1.jpg" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
 								<li data-thumb="images/si2.jpg">
 									<div class="thumb-image">
-										<img src="images/si2.jpg" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
 								<li data-thumb="images/si3.jpg">
 									<div class="thumb-image">
-										<img src="images/si3.jpg" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -78,7 +78,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
+					<h3 class="mb-3">'.$row["productName"].'</h3>
 					<p class="mb-3">
 						<span class="item_price">$'.$row["productMrp"].'</span>
 						<del class="mx-2 font-weight-light">$280.00</del>
@@ -106,19 +106,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<label>1 Year</label>Manufacturer Warranty</p>
 						<ul>
 							<li class="mb-1">
-								3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
+								'.$row["productDescription"].'
 							</li>
 							<li class="mb-1">
-								5.5 inch Full HD Display
+								'.$row["productDescription"].'
 							</li>
 							<li class="mb-1">
-								13MP Rear Camera | 8MP Front Camera
+								'.$row["productDescription"].'
 							</li>
 							<li class="mb-1">
-								3300 mAh Battery
+								'.$row["productDescription"].'
 							</li>
 							<li class="mb-1">
-								Exynos 7870 Octa Core 1.6GHz Processor
+								'.$row["productDescription"].'
 							</li>
 						</ul>
 						<p class="my-sm-4 my-3">
