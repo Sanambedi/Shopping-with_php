@@ -255,8 +255,13 @@
 												<img src="../../php mysql stack/Product Table/'.$row1["productImage"].'" alt="" width="100px" height="201px">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="single.php" class="link-product-add-cart">Quick View</a>
-													</div>
+													<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
+													<fieldset>
+														<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+													</fieldset>
+													</form>';
+
+													echo '</div>
 												</div>
 												<span class="product-new-top">New</span>
 											</div>
