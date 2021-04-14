@@ -28,6 +28,7 @@
 	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- pop-up-box -->
 	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+	
 	<!-- menu style -->
 	<!-- //Custom-Files -->
 
@@ -80,29 +81,17 @@
 			}
 			
 		}
-		$('.toast').toast(option)
 	</script>
+	
 	</head>
 
 <body>
-<!-- top-header -->
-	<!-- Top Navbar starts-->
-	<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-  		<!-- Then put toasts within -->
-  		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    		<div class="toast-header">
-      			<img src="..." class="rounded mr-2" alt="...">
-      			<strong class="mr-auto">Bootstrap</strong>
-      			<small>11 mins ago</small>
-      			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        			<span aria-hidden="true">&times;</span>
-      			</button>
-    		</div>
-    		<div class="toast-body">
-      			Hello, world! This is a toast message.
-    		</div>
-  		</div>
-	</div>
+<div class="container">
+  <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>
 	<div class="agile-main-top">
 		<div class="container-fluid">
 			<div class="row main-top-w3l py-2">
