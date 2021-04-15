@@ -193,6 +193,12 @@
 										echo"<script>alert('User must signin first')</script>";
 									}
 									while($row1 = mysqli_fetch_array($result1)){
+										if(isset($_POST["submit-crack".$row1['id']])){
+											echo '<div class="alert alert-danger alert-dismissible">
+											<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+											<strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+										  </div>';
+										}
 										if($pip==0){
 											echo'
 											<div class="col-md-4 product-men mt-5">
@@ -298,7 +304,7 @@
 											var quantity = document.getElementById("quantity").value
 											var price = document.getElementById("amount'.$row1["productMrp"].'").value
 											$.post("process.php",{customer_id:customer_id,productid:productid,quantity:quantity,price:price},function(data){
-												console.log(data);
+												location.replace("http://localhost/electro_store-web_Free28-08-2018_1414020280/web/checkout.php")
 											})
 										})
 									})

@@ -9,4 +9,5 @@ $sql = "INSERT INTO tabcart(customer_id,product_id,quantity,date,price)
 		if(!mysqli_query($link, $sql)){
 			die('error:'.mysqli_error($link));
 		}
+
 ?>
