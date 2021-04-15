@@ -86,12 +86,7 @@
 	</head>
 
 <body>
-<div class="container">
-  <div class="alert alert-danger alert-dismissible">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
-  </div>
-</div>
+
 	<div class="agile-main-top">
 		<div class="container-fluid">
 			<div class="row main-top-w3l py-2">
@@ -676,19 +671,19 @@
 						<!-- cart details start -->
 						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
 							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-								<form action="#" method="post" class="last">
+								<form action="checkout.php" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="display" value="1">
+										<button class="btn w3view-cart" name="submit"  value="">
 										<?php 
-										echo '<button class="btn w3view-cart" type="submit" name="submit" value="">
-												<i class="fas fa-cart-arrow-down"></i>';
-													$sql = "SELECT * FROM tabcart where customer_id='$pip'";
-													$result = mysqli_query($link,$sql);
-													$numbers=0;
-													while($row = mysqli_fetch_array($result)){
-														$numbers++;	
-													}
-											echo '<span class="badge badge-warning">'.$numbers.'</span>'
+										echo '<i class="fas fa-cart-arrow-down"></i>';
+												$sql = "SELECT * FROM tabcart where customer_id='$pip'";
+												$result = mysqli_query($link,$sql);
+												$numbers=0;
+												while($row = mysqli_fetch_array($result)){
+													$numbers++;	
+												}
+										echo '<span class="badge badge-warning">'.$numbers.'</span>'
 										?>
 									</button>
 								</form>
@@ -799,5 +794,4 @@
 	</div>
 	<!--Third navigation bar khatam-->
 	<!-- //navigation -->
-
 	
