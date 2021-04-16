@@ -60,7 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<tr>
 								<th>SL No.</th>
 								<th>Product</th>
-								<th>Quality</th>
+								<th>Quantity</th>
 								<th>Product Name</th>
 
 								<th>Price</th>
@@ -68,11 +68,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="rem1">
-								<td class="invert">1</td>
+
+							<?php
+							$sql = "SELECT * FROM tabcart where customer_id='$pip'";
+							$result = mysqli_query($link,$sql);
+							$numt=1;
+							while($row = mysqli_fetch_array($result)){
+								echo '<tr class="rem1">
+								<td class="invert">'.$numt.'</td>
 								<td class="invert-image">
 									<a href="single.php">
-										<img src="images/a.jpg" alt=" " class="img-responsive">
+										<img src="../../php%20mysql%20stack/Product%20Table/'.$row["image"].'" style="width: 40px;height:90px" alt=" " >
 									</a>
 								</td>
 								<td class="invert">
@@ -80,72 +86,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<div class="quantity-select">
 											<div class="entry value-minus">&nbsp;</div>
 											<div class="entry value">
-												<span>1</span>
+												<span>'.$row["quantity"].'</span>
 											</div>
 											<div class="entry value-plus active">&nbsp;</div>
 										</div>
 									</div>
 								</td>
-								<td class="invert">Back Cover</td>
-								<td class="invert">$259</td>
+								<td class="invert">'.$row["productName"].'</td>
+								<td class="invert">$'.$row["price"].'</td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close1"> </div>
 									</div>
 								</td>
-							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<a href="single2.php">
-										<img src="images/a4.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">$1,999</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<a href="single.php">
-										<img src="images/a3.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Nikon Camera</td>
-								<td class="invert">$37,490</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-								</td>
-							</tr>
+							</tr>';
+							$numt++;
+							}
+							
+							?>
+
+							
 						</tbody>
 					</table>
 				</div>

@@ -283,6 +283,8 @@
 												echo'	
 													<form method="post" class="form2'.$row1["id"].'">
 														<fieldset>
+															<input type="hidden" name="image" value="'.$row1["productImage"].'" id="image'.$row1["productImage"].'" />
+															<input type="hidden" name="productName" value="'.$row1["productName"].'" id="productName" />
 															<input type="hidden" name="name" value="'.$pip.'" id="name" />
 															<input type="hidden" name="productid" id="productid'.$row1["id"].'" value="'.$row1["id"].'" />
 															<input type="hidden" name="quantity" value="1" id="quantity"/>
@@ -299,11 +301,13 @@
 									$(document).ready(function(){
 										$(".form2'.$row1["id"].'").submit(function(event){
 											event.preventDefault()
+											var productName = document.getElementById("productName").value
 											var customer_id = document.getElementById("name").value
 											var productid = document.getElementById("productid'.$row1["id"].'").value
 											var quantity = document.getElementById("quantity").value
 											var price = document.getElementById("amount'.$row1["productMrp"].'").value
-											$.post("process.php",{customer_id:customer_id,productid:productid,quantity:quantity,price:price},function(data){
+											var image = document.getElementById("image'.$row1["productImage"].'").value
+											$.post("process.php",{productName:productName,customer_id:customer_id,productid:productid,quantity:quantity,price:price,image:image},function(data){
 												location.replace("http://localhost/electro_store-web_Free28-08-2018_1414020280/web/checkout.php")
 											})
 										})
