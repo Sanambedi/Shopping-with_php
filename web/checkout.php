@@ -52,7 +52,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4 class="mb-sm-4 mb-3">Your shopping cart contains:
-					<span>3 Products</span>
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -74,6 +73,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$result = mysqli_query($link,$sql);
 							$numt=1;
 							while($row = mysqli_fetch_array($result)){
+								if(isset($_POST["remove-item".$row["id"]])){
+									$kit = $row["id"];
+									$sqlDelete = "DELETE FROM `tabcart` WHERE `tabcart`.`id` = $kit";
+									$result1 = mysqli_query($link,$sqlDelete);
+									break;
+								}
 								echo '<tr class="rem1">
 								<td class="invert">'.$numt.'</td>
 								<td class="invert-image">
@@ -96,7 +101,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<td class="invert">$'.$row["price"].'</td>
 								<td class="invert">
 									<div class="rem">
-										<div class="close1"> </div>
+									<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+										<button name="remove-item'.$row["id"].'" class="responsive"><i class="far fa-window-close"></i></button>
+									</form>	
 									</div>
 								</td>
 							</tr>';
