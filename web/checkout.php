@@ -75,8 +75,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							while($row = mysqli_fetch_array($result)){
 								if(isset($_POST["remove-item".$row["id"]])){
 									$kit = $row["id"];
-									$sqlDelete = "DELETE FROM `tabcart` WHERE `tabcart`.`id` = $kit";
+									$sqlDelete = "DELETE FROM `tabcart` WHERE `tabcart`.`id` = $kit AND `tabcart`.`customer_id` = $pip";
 									$result1 = mysqli_query($link,$sqlDelete);
+									echo"<script>window.location.reload()</script>";
 									break;
 								}
 								echo '<tr class="rem1">
