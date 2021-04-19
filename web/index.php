@@ -308,7 +308,6 @@
 											var price = document.getElementById("amount'.$row1["productMrp"].'").value
 											var image = document.getElementById("image'.$row1["productImage"].'").value
 											$.post("process.php",{productName:productName,customer_id:customer_id,productid:productid,quantity:quantity,price:price,image:image},function(data){
-												location.replace("http://localhost/electro_store-web_Free28-08-2018_1414020280/web/checkout.php")
 											})
 										})
 									})
