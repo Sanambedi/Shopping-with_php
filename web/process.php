@@ -1,6 +1,6 @@
 <?php
 include "connection.php";
-$sqlchecker = "SELECT * FROM tabcart WHERE customer_id='".$_POST['customer_id']."' AND product_id='".$_POST['productid']."'";
+$sqlchecker = "SELECT * FROM `tabcart` WHERE customer_id='".$_POST['customer_id']."' AND product_id='".$_POST['productid']."'";
 $result1 =  mysqli_query($link,$sqlchecker);
 $count = mysqli_num_rows($result1);
 if($count!=0){
