@@ -284,7 +284,7 @@
 													<form method="post" class="form2'.$row1["id"].'">
 														<fieldset>
 															<input type="hidden" name="image" value="'.$row1["productImage"].'" id="image'.$row1["productImage"].'" />
-															<input type="hidden" name="productName" value="'.$row1["productName"].'" id="productName" />
+															<input type="hidden" name="productName" value="'.$row1["productName"].'" id="productName'.$row1["productName"].'" />
 															<input type="hidden" name="name" value="'.$pip.'" id="name" />
 															<input type="hidden" name="productid" id="productid'.$row1["id"].'" value="'.$row1["id"].'" />
 															<input type="hidden" name="quantity" value="1" id="quantity"/>
@@ -301,7 +301,7 @@
 									$(document).ready(function(){
 										$(".form2'.$row1["id"].'").submit(function(event){
 											event.preventDefault()
-											var productName = document.getElementById("productName").value
+											var productName = document.getElementById("productName'.$row1["productName"].'").value
 											var customer_id = document.getElementById("name").value
 											var productid = document.getElementById("productid'.$row1["id"].'").value
 											var quantity = document.getElementById("quantity").value
