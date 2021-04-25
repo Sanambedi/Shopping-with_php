@@ -14,28 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta charset="UTF-8" />
 	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
 	/>
-	<script>
-	function addProduct(str){
-		if(str==""){
-            document.getElementById("focusSubject1").innerHTML="1";
-            return;
-        }
-        if(window.XMLHttpRequest){
-            xmlhttp = new XMLHttpRequest();
-        }
-        else{
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function(){
-            if(xmlhttp.readyState==4 && xmlhttp.status==200){
-                document.getElementById("focusSubject1").innerHTML=xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET","getQuantity.php?request=" + str,true);
-        xmlhttp.send();
-	}
-	</script>
-
+	
 	<?php include"./header.php"?>
 	<!-- shop locator (popup) -->
 	<!-- //header-bottom -->
@@ -101,7 +80,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									echo"<script>window.location.reload()</script>";
 									break;
 								}
-								echo '<tr class="rem1">
+								echo '
+								<script>
+									function addProduct'.$row["id"].'(str){
+										if(str==""){
+											document.getElementById("focusSubject1'.$row["id"].'").innerHTML="1";
+											return;
+										}
+										if(window.XMLHttpRequest){
+											xmlhttp = new XMLHttpRequest();
+										}
+										else{
+											xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+										}
+										xmlhttp.onreadystatechange = function(){
+											if(xmlhttp.readyState==4 && xmlhttp.status==200){
+												document.getElementById("focusSubject1'.$row["id"].'").innerHTML=xmlhttp.responseText;
+											}
+										}
+										xmlhttp.open("GET","getQuantity.php?request=" + str,true);
+										xmlhttp.send();
+									}
+								</script>
+							<tr class="rem1">
 								<td class="invert">'.$numt.'</td>
 								<td class="invert-image">
 									<a href="single.php">
@@ -112,12 +113,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="quantity">
 										<div class="quantity-select">
 											<div class="entry value-minus">&nbsp;</div>
-											<div id="focusSubject1">
+											<div id="focusSubject1'.$row["id"].'" class="entry value">
 												<div class="entry value">
 													<span id="demo">'.$row["quantity"].'</span>
 												</div>
 											</div>
-											<div class="entry value-plus active" onclick="addProduct('.$row["id"].');">&nbsp;</div>
+											<div class="entry value-plus active" onclick="addProduct'.$row["id"].'('.$row["id"].');">&nbsp;</div>
 										</div>
 									</div>
 								</td>
