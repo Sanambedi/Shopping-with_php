@@ -63,14 +63,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="thumb-image">
 										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
-								<li data-thumb="images/si2.jpg">
-									<div class="thumb-image">
-										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
-								</li>
-								<li data-thumb="images/si3.jpg">
-									<div class="thumb-image">
-										<img src="../../php%20mysql%20stack/Product Table/'.$row["productImage"].'" data-imagezoom="true" class="img-fluid" alt=""> </div>
-								</li>
+								
 							</ul>
 							<div class="clearfix"></div>
 						</div>

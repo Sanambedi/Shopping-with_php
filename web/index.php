@@ -208,9 +208,9 @@
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
 															<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
-															<fieldset>
-																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
-															</fieldset>
+																<fieldset>
+																	<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+																</fieldset>
 															</form>';
 															// echo '<script>
 															// 	$(document).ready(function(){

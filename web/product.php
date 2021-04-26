@@ -70,7 +70,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<img src="../../php mysql stack/Product Table/'.$row["productImage"].'" width="100px" height="201px" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-																<a href="single.php" class="link-product-add-cart">Quick View</a>
+																<form method="post" action="single.php?request='.$row["id"].'" class="form3'.$row["id"].'">
+																	<fieldset>
+																		<input type="submit" class="link-product-add-cart" id="show-item'.$row["id"].'" name="show-item'.$row["id"].'" value="Quick View" />
+																	</fieldset>
+																</form>
 															</div>
 														</div>
 														<span class="product-new-top">New</span>
@@ -115,7 +119,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<img src="../../php mysql stack/Product Table/'.$row["productImage"].'" width="100px" height="201px" alt="">
 												<div class="men-cart-pro">
 													<div class="inner-men-cart-pro">
-														<a href="single.php" class="link-product-add-cart">Quick View</a>
+														<form method="post" action="single.php?request='.$row["id"].'" class="form3'.$row["id"].'">
+															<fieldset>
+																<input type="submit" class="link-product-add-cart" id="show-item'.$row["id"].'" name="show-item'.$row["id"].'" value="Quick View" />
+															</fieldset>
+														</form>
 													</div>
 												</div>
 												<span class="product-new-top">New</span>
