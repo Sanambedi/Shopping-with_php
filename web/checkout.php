@@ -85,6 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									function addProduct'.$row["id"].'(str){
 										if(str==""){
 											document.getElementById("focusSubject1'.$row["id"].'").innerHTML="1";
+											document.getElementById("rate'.$row["id"].'").innerHTML="'.$row["price"].'";
 											return;
 										}
 										if(window.XMLHttpRequest){
@@ -95,7 +96,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										}
 										xmlhttp.onreadystatechange = function(){
 											if(xmlhttp.readyState==4 && xmlhttp.status==200){
+												var tree = xmlhttp.responseText * '.$row["price"].';
+												var j = "<div class=`invert`>$"+tree+"</div>";
 												document.getElementById("focusSubject1'.$row["id"].'").innerHTML=xmlhttp.responseText;
+												document.getElementById("rate'.$row["id"].'").innerHTML=j;
+												console.log(xmlhttp.responseText)
 											}
 										}
 										xmlhttp.open("GET","getQuantity.php?request=" + str,true);
@@ -106,6 +111,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									function subtractProduct'.$row["id"].'(str){
 										if(str==""){
 											document.getElementById("focusSubject1'.$row["id"].'").innerHTML="1";
+											document.getElementById("rate'.$row["id"].'").innerHTML="'.$row["price"].'";
 											return;
 										}
 										if(window.XMLHttpRequest){
@@ -116,7 +122,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										}
 										xmlhttp.onreadystatechange = function(){
 											if(xmlhttp.readyState==4 && xmlhttp.status==200){
+												var tree = xmlhttp.responseText * '.$row["price"].';
+												var j = "<div class=`invert`>$"+tree+"</div>";
 												document.getElementById("focusSubject1'.$row["id"].'").innerHTML=xmlhttp.responseText;
+												document.getElementById("rate'.$row["id"].'").innerHTML=j;
+												console.log(xmlhttp.responseText)
 											}
 										}
 										xmlhttp.open("GET","getQuantitySubtracted.php?request=" + str,true);
@@ -142,7 +152,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</td>
 								<td class="invert">'.$row["productName"].'</td>
-								<td id="rate'.$row["id"].'" class="invert">$'.$row["price"].'</td>
+								<td id="rate'.$row["id"].'" class="invert">$'.$row["amount"].'</td>
 								<td class="invert">
 									<div class="rem">
 									<form action="'.$_SERVER['PHP_SELF'].'" method="post">
