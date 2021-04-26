@@ -102,6 +102,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										xmlhttp.send();
 									}
 								</script>
+								<script>
+									function subtractProduct'.$row["id"].'(str){
+										if(str==""){
+											document.getElementById("focusSubject1'.$row["id"].'").innerHTML="1";
+											return;
+										}
+										if(window.XMLHttpRequest){
+											xmlhttp = new XMLHttpRequest();
+										}
+										else{
+											xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+										}
+										xmlhttp.onreadystatechange = function(){
+											if(xmlhttp.readyState==4 && xmlhttp.status==200){
+												document.getElementById("focusSubject1'.$row["id"].'").innerHTML=xmlhttp.responseText;
+											}
+										}
+										xmlhttp.open("GET","getQuantitySubtracted.php?request=" + str,true);
+										xmlhttp.send();
+									}
+								</script>
 							<tr class="rem1">
 								<td class="invert">'.$numt.'</td>
 								<td class="invert-image">
@@ -112,18 +133,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<td class="invert">
 									<div class="quantity">
 										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div id="focusSubject1'.$row["id"].'" class="entry value">
-												<div class="entry value">
+											<div class="entry value-minus" onclick="subtractProduct'.$row["id"].'('.$row["id"].');">&nbsp;</div>
+												<div id="focusSubject1'.$row["id"].'" class="entry value">
 													<span id="demo">'.$row["quantity"].'</span>
 												</div>
-											</div>
-											<div class="entry value-plus active" onclick="addProduct'.$row["id"].'('.$row["id"].');">&nbsp;</div>
+											<div class="entry value-plus" onclick="addProduct'.$row["id"].'('.$row["id"].');">&nbsp;</div>
 										</div>
 									</div>
 								</td>
 								<td class="invert">'.$row["productName"].'</td>
-								<td class="invert">$'.$row["price"].'</td>
+								<td id="rate'.$row["id"].'" class="invert">$'.$row["price"].'</td>
 								<td class="invert">
 									<div class="rem">
 									<form action="'.$_SERVER['PHP_SELF'].'" method="post">
