@@ -156,7 +156,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<td class="invert">
 									<div class="rem">
 									<form action="'.$_SERVER['PHP_SELF'].'" method="post">
-										<button name="remove-item'.$row["id"].'" class="responsive"><i class="far fa-window-close"></i></button>
+										<button name="remove-item'.$row["id"].'" style="cursor:pointer;" class="responsive btn-danger"><i class="far fa-window-close"></i></button>
 									</form>	
 									</div>
 								</td>

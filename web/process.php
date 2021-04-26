@@ -10,17 +10,19 @@ if($count!=0){
 		$k=$row2["quantity"];
 	}
 	$k = $k+1;
-	$sql3 = "UPDATE tabcart SET quantity='".$k."'  WHERE customer_id='".$_POST['customer_id']."' AND product_id='".$_POST['productid']."'";
+	$r= $k * $_POST["price"];
+	$sql3 = "UPDATE tabcart SET quantity='".$k."',amount='".$r."'  WHERE customer_id='".$_POST['customer_id']."' AND product_id='".$_POST['productid']."'";
 	$result3 = mysqli_query($link,$sql3);
 	
 }
 else{
-	$sql = "INSERT INTO tabcart(productName,customer_id,product_id,quantity,date,price,image)
+	$sql = "INSERT INTO tabcart(productName,customer_id,product_id,quantity,date,price,amount,image)
 		VALUES('$_POST[productName]',
 		'$_POST[customer_id]',
 		'$_POST[productid]',
 		'$_POST[quantity]',
 		NOW(),
+		'$_POST[price]',
 		'$_POST[price]',
 		'$_POST[image]')";
 		if(!mysqli_query($link, $sql)){

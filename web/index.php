@@ -112,73 +112,127 @@
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
 							<h3 class="heading-tittle text-center font-italic">New Men's Wear</h3>
 							<div class="row">
+							<?php
 								
-										<?php 
-											$sql = "SELECT * FROM producttable where mainCategory='2' ORDER BY id DESC LIMIT 3";
-											$result= mysqli_query($link,$sql);
-											while($row=mysqli_fetch_array($result)){
-												if(isset($_POST["submit-crack".$row['id']])){
-													
-													$sqlx = "INSERT INTO tabcart(customer_id,product_id,quantity,date,price)
-													VALUES('$_POST[name]',
-															'$_POST[productid]',
-															'$_POST[quantity]',
-															NOW(),
-															'$_POST[amount]')";
-															if(!mysqli_query($link, $sqlx))
-															{
-																die('error:'.mysqli_error($link));
-															}  
-												}
-												echo'
+								$sql1 = "SELECT * FROM producttable WHERE maincategory='2' ORDER BY id DESC LIMIT 3";
+								$result1 = mysqli_query($link,$sql1);
+								if(isset($_POST['submit-crack'])){
+									echo"<script>alert('User must signin first')</script>";
+								}
+								while($row1 = mysqli_fetch_array($result1)){
+									if(isset($_POST["submit-crack".$row1['id']])){
+										echo '<div class="alert alert-danger alert-dismissible">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+										<strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+									  </div>';
+									}
+									if($pip==0){
+										echo'
 										<div class="col-md-4 product-men mt-5">
 											<div class="men-pro-item simpleCart_shelfItem">
 												<div class="men-thumb-item text-center">
-													<img src="../../php mysql stack/Product Table/'.$row["productImage"].'" width="100px" height="201px" alt="">
+													<img src="../../php%20mysql%20stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="single.php" class="link-product-add-cart">Quick View</a>
-														</div>
+														<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
+															<fieldset>
+																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+															</fieldset>
+														</form>';
+														echo '</div>
 													</div>
 													<span class="product-new-top">New</span>
 												</div>
 												<div class="item-info-product text-center border-top mt-4">
 													<h4 class="pt-1">
-														<a href="single.php">'.$row["productName"].'</a>
+														<a href="single.php">'.$row1["productName"].'</a>
 													</h4>
 													<div class="info-product-price my-2">
-														<span class="item_price">$'.$row["productMrp"].'</span>
-														<del>$'.$row["productMrp"].'</del>
+														<span class="item_price">$'.$row1["productMrp"].'</span>
+														<del>$'.$row1["productMrp"].'</del>
 													</div>
 													<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-													<form action="'.$_SERVER['PHP_SELF'].'" method="post">
+													<form action="'.$_SERVER['PHP_SELF'].'" class="213" method="post" id="blank6255">
 														<fieldset>
 															<input type="hidden" name="name" value="'.$pip.'" />
-															<input type="hidden" name="productid" value="'.$row["id"].'" />
+															<input type="hidden" name="productid" value="'.$row1["id"].'" />
 															<input type="hidden" name="quantity" value="1" />
-															<input type="hidden" name="item_name" value="'.$row["productName"].'" />
-															<input type="hidden" name="amount" value="'.$row["productMrp"].'" />
-															<input type="hidden" name="discount_amount" value="1.00" />
-															<input type="hidden" name="currency_code" value="USD" />
-															<input type="hidden" name="return" value=" " />
-															<input type="hidden" name="cancel_return" value=" " />
-															<button name="submit-crack'.$row["id"].'" class="button btn-lg btn-primary" >Add to cart</button>
+															<input type="hidden" name="item_name" value="'.$row1["productName"].'" />
+															<input type="hidden" name="amount" value="'.$row1["productMrp"].'" />
+															<input type="submit" name="submit-crack" class="button btn-lg btn-primary" value="Add To Cart">
 														</fieldset>
 													</form>
 													</div>
 												</div>
 											</div>
+										</div>';
+										
+									}
+									else{
+									echo'
+									<div class="col-md-4 product-men mt-5">
+									<div class="men-pro-item simpleCart_shelfItem">
+										<div class="men-thumb-item text-center">
+											<img src="../../php mysql stack/Product Table/'.$row1["productImage"].'" alt="" width="100px" height="201px">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+												<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
+												<fieldset>
+													<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+												</fieldset>
+												</form>';
+
+												echo '</div>
+											</div>
+											<span class="product-new-top">New</span>
 										</div>
-										';
-											}
-										?>
+										<div class="item-info-product text-center border-top mt-4">
+											<h4 class="pt-1">
+												<a href="single.php">'.$row1["productName"].'</a>
+											</h4>
+											<div class="info-product-price my-2">
+												<span class="item_price">$'.$row1["productMrp"].'</span>
+												<del>$'.$row1["productMrp"].'</del>
+											</div>
+											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">';
+											echo'	
+												<form method="post" class="form2'.$row1["id"].'">
+													<fieldset>
+														<input type="hidden" name="image" value="'.$row1["productImage"].'" id="image'.$row1["productImage"].'" />
+														<input type="hidden" name="productName" value="'.$row1["productName"].'" id="productName'.$row1["productName"].'" />
+														<input type="hidden" name="name" value="'.$pip.'" id="name" />
+														<input type="hidden" name="productid" id="productid'.$row1["id"].'" value="'.$row1["id"].'" />
+														<input type="hidden" name="quantity" value="1" id="quantity"/>
+														<input type="hidden" name="item_name" value="'.$row1["productName"].'" id="item_name" />
+														<input type="hidden" name="amount" value="'.$row1["productMrp"].'" id="amount'.$row1["productMrp"].'"/>
+														<input type="submit" name="submit-crack'.$row1["id"].'" id="submit-crack'.$row1["id"].'" class="button btn-lg btn-primary" value="Add to Cart">
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>';
+								echo '<script>
+								$(document).ready(function(){
+									$(".form2'.$row1["id"].'").submit(function(event){
+										event.preventDefault()
+										var productName = document.getElementById("productName'.$row1["productName"].'").value
+										var customer_id = document.getElementById("name").value
+										var productid = document.getElementById("productid'.$row1["id"].'").value
+										var quantity = document.getElementById("quantity").value
+										var price = document.getElementById("amount'.$row1["productMrp"].'").value
+										var image = document.getElementById("image'.$row1["productImage"].'").value
+										$.post("process.php",{productName:productName,customer_id:customer_id,productid:productid,quantity:quantity,price:price,image:image},function(data){
+											window.location.replace("http://localhost/electro_store-web_Free28-08-2018_1414020280/web/checkout.php");
+										})
+									})
+								})
+							</script>';
+								}
+							}
+							?>									
 								</div>
-						</div>						
-											
-										
-										
-											
-											
+						</div>																
 						<!--Our new products end-->
 						<!-- //first section -->
 						<!-- second section starts -->
@@ -212,18 +266,6 @@
 																	<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
 																</fieldset>
 															</form>';
-															// echo '<script>
-															// 	$(document).ready(function(){
-															// 		$(".form3'.$row1["id"].'").submit(function(event){
-															// 			event.preventDefault()
-															// 			var productid1 = document.getElementById("productid1'.$row1["id"].'").value
-																		
-															// 			$.post("single.php",{productid1:productid1},function(data){
-															// 				location.replace("./single.php")
-															// 			})
-															// 		})
-															// 	})
-															// 	</script>';	
 															echo '</div>
 														</div>
 														<span class="product-new-top">New</span>
@@ -335,65 +377,125 @@
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
 							<h3 class="heading-tittle text-center font-italic">Large Appliances</h3>
 							<div class="row">
-									<?php 
-										
-										$sql2 = "SELECT * FROM producttable where mainCategory='8' ORDER BY id DESC LIMIT 3";
-										$result2= mysqli_query($link,$sql2);
-										while($row2=mysqli_fetch_array($result2)){
-											if(isset($_POST["submit-crack".$row2['id']])){
-												$sql = "INSERT INTO tabcart(customer_id,product_id,quantity,date,price)
-												VALUES('$_POST[name]',
-														'$_POST[productid]',
-														'$_POST[quantity]',
-														NOW(),
-														'$_POST[amount]')";
-														if(!mysqli_query($link, $sql))
-														{
-															die('error:'.mysqli_error($link));
-														}  
-											}
+							<?php
+								
+								$sql1 = "SELECT * FROM producttable WHERE maincategory='8' ORDER BY id DESC LIMIT 3";
+								$result1 = mysqli_query($link,$sql1);
+								if(isset($_POST['submit-crack'])){
+									echo"<script>alert('User must signin first')</script>";
+								}
+								while($row1 = mysqli_fetch_array($result1)){
+									if(isset($_POST["submit-crack".$row1['id']])){
+										echo '<div class="alert alert-danger alert-dismissible">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+										<strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+									  </div>';
+									}
+									if($pip==0){
 										echo'
 										<div class="col-md-4 product-men mt-5">
 											<div class="men-pro-item simpleCart_shelfItem">
 												<div class="men-thumb-item text-center">
-													<img src="../../php mysql stack/Product Table/'.$row2["productImage"].'" width="100px" height="201px" alt="">
+													<img src="../../php%20mysql%20stack/Product Table/'.$row1["productImage"].'" width="100px" height="201px" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="single.php" class="link-product-add-cart">Quick View</a>
-														</div>
+														<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
+															<fieldset>
+																<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+															</fieldset>
+														</form>';	
+														echo '</div>
 													</div>
 													<span class="product-new-top">New</span>
 												</div>
 												<div class="item-info-product text-center border-top mt-4">
 													<h4 class="pt-1">
-														<a href="single.php">'.$row2["productName"].'</a>
+														<a href="single.php">'.$row1["productName"].'</a>
 													</h4>
 													<div class="info-product-price my-2">
-														<span class="item_price">$'.$row2["productMrp"].'</span>
-														<del>$'.$row2["productMrp"].'</del>
+														<span class="item_price">$'.$row1["productMrp"].'</span>
+														<del>$'.$row1["productMrp"].'</del>
 													</div>
 													<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-														<form action="'.$_SERVER['PHP_SELF'].'" method="post">
-															<fieldset>
-																<input type="hidden" name="name" value="'.$pip.'" />
-																<input type="hidden" name="productid" value="'.$row2["id"].'" />
-																<input type="hidden" name="quantity" value="1" />
-																<input type="hidden" name="item_name" value="'.$row2["productName"].'" />
-																<input type="hidden" name="amount" value="'.$row2["productMrp"].'" />
-																<input type="hidden" name="discount_amount" value="1.00" />
-																<input type="hidden" name="currency_code" value="USD" />
-																<input type="hidden" name="return" value=" " />
-																<input type="hidden" name="cancel_return" value=" " />
-																<input type="submit" name="submit-crack'.$row2["id"].'" class="button btn-lg btn-primary" value="Add to cart">
-															</fieldset>
-														</form>
+													<form action="'.$_SERVER['PHP_SELF'].'" class="213" method="post" id="blank6255">
+														<fieldset>
+															<input type="hidden" name="name" value="'.$pip.'" />
+															<input type="hidden" name="productid" value="'.$row1["id"].'" />
+															<input type="hidden" name="quantity" value="1" />
+															<input type="hidden" name="item_name" value="'.$row1["productName"].'" />
+															<input type="hidden" name="amount" value="'.$row1["productMrp"].'" />
+															<input type="submit" name="submit-crack" class="button btn-lg btn-primary" value="Add To Cart">
+														</fieldset>
+													</form>
 													</div>
 												</div>
 											</div>
+										</div>';
+										
+									}
+									else{
+									echo'
+									<div class="col-md-4 product-men mt-5">
+									<div class="men-pro-item simpleCart_shelfItem">
+										<div class="men-thumb-item text-center">
+											<img src="../../php mysql stack/Product Table/'.$row1["productImage"].'" alt="" width="100px" height="201px">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+												<form method="post" action="single.php?request='.$row1["id"].'" class="form3'.$row1["id"].'">
+												<fieldset>
+													<input type="submit" class="link-product-add-cart" id="show-item'.$row1["id"].'" name="show-item'.$row1["id"].'" value="Quick View" />
+												</fieldset>
+												</form>';
+
+												echo '</div>
+											</div>
+											<span class="product-new-top">New</span>
 										</div>
-										';
-											}
-									?>
+										<div class="item-info-product text-center border-top mt-4">
+											<h4 class="pt-1">
+												<a href="single.php">'.$row1["productName"].'</a>
+											</h4>
+											<div class="info-product-price my-2">
+												<span class="item_price">$'.$row1["productMrp"].'</span>
+												<del>$'.$row1["productMrp"].'</del>
+											</div>
+											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">';
+											echo'	
+												<form method="post" class="form2'.$row1["id"].'">
+													<fieldset>
+														<input type="hidden" name="image" value="'.$row1["productImage"].'" id="image'.$row1["productImage"].'" />
+														<input type="hidden" name="productName" value="'.$row1["productName"].'" id="productName'.$row1["productName"].'" />
+														<input type="hidden" name="name" value="'.$pip.'" id="name" />
+														<input type="hidden" name="productid" id="productid'.$row1["id"].'" value="'.$row1["id"].'" />
+														<input type="hidden" name="quantity" value="1" id="quantity"/>
+														<input type="hidden" name="item_name" value="'.$row1["productName"].'" id="item_name" />
+														<input type="hidden" name="amount" value="'.$row1["productMrp"].'" id="amount'.$row1["productMrp"].'"/>
+														<input type="submit" name="submit-crack'.$row1["id"].'" id="submit-crack'.$row1["id"].'" class="button btn-lg btn-primary" value="Add to Cart">
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>';
+								echo '<script>
+								$(document).ready(function(){
+									$(".form2'.$row1["id"].'").submit(function(event){
+										event.preventDefault()
+										var productName = document.getElementById("productName'.$row1["productName"].'").value
+										var customer_id = document.getElementById("name").value
+										var productid = document.getElementById("productid'.$row1["id"].'").value
+										var quantity = document.getElementById("quantity").value
+										var price = document.getElementById("amount'.$row1["productMrp"].'").value
+										var image = document.getElementById("image'.$row1["productImage"].'").value
+										$.post("process.php",{productName:productName,customer_id:customer_id,productid:productid,quantity:quantity,price:price,image:image},function(data){
+											window.location.replace("http://localhost/electro_store-web_Free28-08-2018_1414020280/web/checkout.php");
+										})
+									})
+								})
+							</script>';
+								}
+							}
+							?>									
 							</div>
 						</div>
 						<!-- //fourth section ends-->
