@@ -37,7 +37,7 @@
                         <td><label>ORDER_ID::*</label></td>
                         <td><input class="form-control" id="ORDER_ID" tabindex="1" maxlength="20" size="20"
                             name="ORDER_ID" autocomplete="off"
-                            value="<?php echo  "ORDS" . rand(10000,99999999)?>">
+                            value="<?php echo  "ASN" . rand(400,408) . rand(1000000,9999999) . rand(1000000,9999999)?>">
                         </td>
                     </tr>
                     <tr>
