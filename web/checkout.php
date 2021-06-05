@@ -72,6 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$sql = "SELECT * FROM tabcart where customer_id='$pip'";
 							$result = mysqli_query($link,$sql);
 							$numt=1;
+							$treetea = 0;
 							while($row = mysqli_fetch_array($result)){
 								if(isset($_POST["remove-item".$row["id"]])){
 									$kit = $row["id"];
@@ -161,6 +162,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</td>
 							</tr>';
+							$treetea = $treetea + $row['amount']; 
 							$numt++;
 							}
 							
@@ -171,10 +173,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</table>
 				</div>
 			</div>
+			<?php
+				if(isset($_POST['submit'])){
+					$amount = $_POST["amount"];
+				}
+			?>
 			<div class="checkout-right-basket">
-				<a href="payment.php">Make a Payment
+			<form action="payment.php" method="post">
+				<input type="hidden" name="amount" value="<?php echo $treetea; ?>"/>
+				<button class="btn btn-lg btn-primary" name="submit">Make a Payment
 					<span class="far fa-hand-point-right"></span>
 				</a>
+			</form>
 			</div>
 		</div>
 	</div>
