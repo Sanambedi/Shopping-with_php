@@ -173,18 +173,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</table>
 				</div>
 			</div>
-			<?php
-				if(isset($_POST['submit'])){
-					$amount = $_POST["amount"];
-				}
-			?>
+			
 			<div class="checkout-right-basket">
 			<form action="payment.php" method="post">
 				<input type="hidden" name="amount" value="<?php echo $treetea; ?>"/>
 				<button class="btn btn-lg btn-primary" name="submit">Make a Payment
 					<span class="far fa-hand-point-right"></span>
-				</a>
+				</button>
 			</form>
+			<?php
+				if(isset($_POST['submit'])){
+					if(isset($_POST['amount'])){
+						$amount = $_POST["amount"];
+					}
+					else{
+						$amount = 0;
+					}
+				}
+			?>
 			</div>
 		</div>
 	</div>
